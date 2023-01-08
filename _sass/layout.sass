@@ -18,11 +18,65 @@ article header
   margin-bottom: 1.5em
 
 article header h1
-  font-size: 1.7em
+  font-size: 2.5em
   margin: 0 0 .1em
 
-nav
+.post-img
+  float: left
+  margin: 0 20px 0 0
+
+.text
+  font-size: 1.5em
+
+.nav
+  display: flex
+  background-color: rgb(253, 253, 253)
+  border-bottom: 0.1px solid rgb(225, 225, 225)
+  justify-content: space-between
+  align-items: center
+  vertical-align: center
+
+.nav-main
+  display: flex
+  gap: 32px
+  margin-right: 40px
+
+.logo
+  height: 60px
+  float: left
+  display: flex
+  align-items: center
+
+.logo img
+  height: 100%
+  width: auto
+  margin: 0
+
+.nav-links
+  display: flex
+  gap: 40px
+  list-style: none
+
+@media(max-width: 450px)
+  .logo
+    display: none
+
+.nav-links a
+  text-decoration: none
+  color: rgb(38, 38, 38)
+  font-family: "Arial Rounded MT Bold"
+  font-weight: 400
+  text-transform: uppercase
+  &:hover
+    color: reduce(100)
+
+.nav-link
+  text-decoration: none
+
+.foot
   margin: .5em -1.2em
 
-nav a
+.foot a
   margin: .5em 1.2em
+  &:hover
+    color: reduce(100)

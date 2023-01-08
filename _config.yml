@@ -1,5 +1,5 @@
 title: "Exaloop blog"
-description: "&copy; 2022 Exaloop, Inc. All rights reserved."
+description: "&copy; 2023 Exaloop, Inc. All rights reserved."
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
@@ -19,9 +19,10 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "archive.html"}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
-  - {title: Mail, icon: envelope, url: "mailto:info@exaloop.io"}
-  - {title: Github, icon: github, url: "https://github.com/exaloop"}
-  - {title: Subscribe, icon: rss, url: "/feed.xml"}
+  - {title: GitHub, icon: "fa-brands fa-github", url: "https://github.com/exaloop"}
+  - {title: Twitter, icon: "fa-brands fa-twitter", url: "https://twitter.com/exaloop"}
+  - {title: Mail, icon: "fa-solid fa-envelope", url: "mailto:info@exaloop.io"}
+  - {title: Subscribe, icon: "fa-solid fa-rss", url: "/feed.xml"}
 
 comments:
 #  disqus_shortname: ""    # see https://disqus.com/

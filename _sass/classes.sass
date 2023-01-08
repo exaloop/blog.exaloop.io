@@ -55,112 +55,154 @@ a:hover .icon
     margin: 0 1.5em 0 .25em
     opacity: .5
 
-.highlight // https://github.com/richleland/pygments-css/blob/master/monokai.css <http://unlicense.org>
-  pre
-    background: #303841
-    color: white
+.highlight
+  .hll
+    background-color: #ffffcc
   .c
-    color: #a29f90
-  .err
-    color: #960050
-    background-color: #1e0010
-  .k
-    color: #f92672 // #66d9ef
-  .l
-    color: #ae81ff
-  .n
-    color: #f8f8f2
-  .o
-    color: #f92672
-  .p
-    color: #f8f8f2
-  .cm, .cp, .c1, .cs
-    color: #75715e
-  .ge
+    color: #999988
     font-style: italic
+  .err
+    color: #a61717
+    background-color: #e3d2d2
+  .k
+    color: #000000
+    font-weight: bold
+  .o
+    color: #000000
+    font-weight: bold
+  .cm
+    color: #999988
+    font-style: italic
+  .cp
+    color: #999999
+    font-weight: bold
+    font-style: italic
+  .c1
+    color: #999988
+    font-style: italic
+  .cs
+    color: #999999
+    font-weight: bold
+    font-style: italic
+  .gd
+    color: #000000
+    background-color: #ffdddd
+  .ge
+    color: #000000
+    font-style: italic
+  .gr
+    color: #aa0000
+  .gh
+    color: #999999
+  .gi
+    color: #000000
+    background-color: #ddffdd
+  .go
+    color: #888888
+  .gp
+    color: #555555
   .gs
     font-weight: bold
-  .kc, .kd
-    color: #66d9ef
-  .kn
-    color: #f92672
-  .kp, .kr, .kt
-    color: #66d9ef
-  .ld
-    color: #e6db74
-  .m
-    color: #ae81ff
-  .s
-    color: #e6db74
-  .na
-    color: #a6e22e
-  .nb
-    color: #f8f8f2
-  .nc
-    color: #a6e22e
-  .no
-    color: #66d9ef
-  .nd
-    color: #a6e22e
-  .ni
-    color: #f8f8f2
-  .ne, .nf
-    color: #a6e22e
-  .nl, .nn
-    color: #f8f8f2
-  .nx
-    color: #a6e22e
-  .py
-    color: #f8f8f2
-  .nt
-    color: #f92672
-  .nv
-    color: #f8f8f2
-  .ow
-    color: #f92672
-  .w
-    color: #f8f8f2
-  .mf, .mh, .mi, .mo
-    color: #ae81ff
-  .sb, .sc, .sd, .s2
-    color: #e6db74
-  .se
-    color: #ae81ff
-  .sh, .si, .sx, .sr, .s1, .ss
-    color: #e6db74
-  .bp, .vc, .vg, .vi
-    color: #f8f8f2
-  .il
-    color: #ae81ff
   .gu
-    color: #75715e
-  .gd
-    color: #f92672
-  .gi
-    color: #a6e22e
-
-.navitem
-  margin-left: 35px
-  text-align: left
-  position: relative
-  float: left
-
-.navitem:hover
-  cursor: pointer
-
-.navitem::before
-  transition: 0.2s
-  height: 3px
-  content: ""
-  position: absolute
-  background-color: $dark
-  width: 100%
-  bottom: -5px
-  opacity: 0
-
-.navitem:hover::before
-  bottom: -2px
-  opacity: 1
+    color: #aaaaaa
+  .gt
+    color: #aa0000
+  .kc
+    color: #000000
+    font-weight: bold
+  .kd
+    color: #000000
+    font-weight: bold
+  .kn
+    color: #000000
+    font-weight: bold
+  .kp
+    color: #000000
+    font-weight: bold
+  .kr
+    color: #000000
+    font-weight: bold
+  .kt
+    color: #445588
+    font-weight: bold
+  .m
+    color: #009999
+  .s
+    color: #d01040
+  .na
+    color: #008080
+  .nb
+    color: #0086B3
+  .nc
+    color: #445588
+    font-weight: bold
+  .no
+    color: #008080
+  .nd
+    color: #3c5d5d
+    font-weight: bold
+  .ni
+    color: #800080
+  .ne
+    color: #990000
+    font-weight: bold
+  .nf
+    color: #990000
+    font-weight: bold
+  .nl
+    color: #990000
+    font-weight: bold
+  .nn
+    color: #555555
+  .nt
+    color: #000080
+  .nv
+    color: #008080
+  .ow
+    color: #000000
+    font-weight: bold
+  .w
+    color: #bbbbbb
+  .mf
+    color: #009999
+  .mh
+    color: #009999
+  .mi
+    color: #009999
+  .mo
+    color: #009999
+  .sb
+    color: #d01040
+  .sc
+    color: #d01040
+  .sd
+    color: #d01040
+  .s2
+    color: #d01040
+  .se
+    color: #d01040
+  .sh
+    color: #d01040
+  .si
+    color: #d01040
+  .sx
+    color: #d01040
+  .sr
+    color: #009926
+  .s1
+    color: #d01040
+  .ss
+    color: #990073
+  .bp
+    color: #999999
+  .vc
+    color: #008080
+  .vg
+    color: #008080
+  .vi
+    color: #008080
+  .il
+    color: #009999
 
 .description
   color: reduce(100)

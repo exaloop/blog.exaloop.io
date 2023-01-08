@@ -4,6 +4,9 @@
 <meta charset="{{ site.encoding }}">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="icon" href="/assets/img/favicon.png">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Exaloop">
 <meta property="og:description" content="Modernizing high-performance computing.">
@@ -25,6 +28,9 @@
 <script defer src="{{ "/assets/katex/katex.min.js" | relative_url }}"></script>
 <script defer src="{{ "/assets/katex/contrib/auto-render.min.js" | relative_url }}" onload="renderMathInElement(document.body)"></script>
 {% endif %}
+{% if page.mermaid %}
+  {% include mermaid.html %}
+{% endif %}
 {% if site.comments.disqus_shortname and page.layout == "post" %}<script src="//{{ site.comments.disqus_shortname }}.disqus.com/embed.js" async></script>{% endif %}
 {% if site.comments.isso_domain and page.layout == "post" %}<script data-isso="http://{{ site.comments.isso_domain }}" src="//{{ site.comments.isso_domain }}/js/embed.min.js"></script>{% endif %}
 {% if site.show_sidebar or site.sidebar %}{% include sidebar.html %}{% endif %}
@@ -35,17 +41,41 @@
   {% assign pages = site.pages | where_exp: "item", "item.title and item.sitemap != false" | sort: "order" %}
 {% endif %}
 
-<header>
-  <a href="https://exaloop.io"><img src="/assets/img/logo-dark.svg" width="15%" alt="logo" /></a>
-  {% include menu.html menu=pages %}
-</header>
+<nav class="nav">
+  <div class="logo">
+    <img src="/assets/img/logo-dark.svg" width="20%" alt="logo" />
+  </div>
+  <div class="nav-main">
+    <ul class="nav-links">
+      {%- for item in site.navigation -%}
+        {%- assign node = site.pages | where: "name", item.file | first -%}
+        {%- assign url = item.url | default: node.url -%}
+        {%- assign title = item.title | default: node.title -%}
+        <li class="nav-link">
+          <a href="{{ url | relative_url }}">
+            {{ title }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <iframe src="https://ghbtns.com/github-btn.html?user=exaloop&repo=codon&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+</nav>
 
 {{ content }}
 
 {% if site.external %}
 <footer>
   <div class="description">{{ site.description | default: site.title }}</div>
-  {% include menu.html menu=site.external %}
+  <nav class="foot">
+    {%- for item in site.external -%}
+      {%- assign url = item.url -%}
+      {%- assign icon = item.icon -%}
+      <a href="{{ url | relative_url }}" {% if url == page.url %}class="selected"{% endif %}>
+        <i class="{{ icon }}"></i>
+      </a>
+    {%- endfor -%}
+  </nav>
 </footer>
 {% endif %}
 

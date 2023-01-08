@@ -4,7 +4,12 @@ layout: default
 
 <article>
   {% include meta.html post=page %}
-  {{ content }}
+  {% if page.image %}
+    <img src="{{ page.image }}" alt="post image" width="50%"></img>
+  {% endif %}
+  <div class="text">
+    {{ content }}
+  </div>
   {% if page.comments != false and site.comments.isso or site.comments.disqus %}
     <hr>
     {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}

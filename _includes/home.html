@@ -2,8 +2,12 @@
 {% for post in posts %}
   <article>
     {% include meta.html post=post preview=true %}
-    {{ post.excerpt }}
-    <div class="more"><a href="{{ post.url | relative_url }}">read more</a></div>
+    {% if post.image %}
+      <img class="post-img" src="{{ post.image }}" alt="post image" width="20%"></img>
+    {% endif %}
+    <div class="text">
+      {{ post.content | strip_html | truncatewords: 50 }}
+    </div>
   </article>
 {% endfor %}
 
