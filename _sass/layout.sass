@@ -36,30 +36,24 @@ article header h1
   align-items: center
   vertical-align: center
 
-.nav-main
-  display: flex
-  gap: 32px
-  margin-right: 40px
-
 .logo
-  height: 60px
+  min-width: 60px
+  min-height: 60px
+  margin: 5px 5px 5px 5px
   float: left
   display: flex
   align-items: center
+  background: transparent url('/assets/img/logo-small.svg') center top no-repeat
 
-.logo img
-  height: 100%
-  width: auto
-  margin: 0
+.nav-main
+  gap: 32px
+  margin-right: 40px
+  margin-left: auto
 
 .nav-links
   display: flex
   gap: 40px
   list-style: none
-
-@media(max-width: 450px)
-  .logo
-    display: none
 
 .nav-links a
   text-decoration: none
