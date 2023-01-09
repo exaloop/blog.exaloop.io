@@ -214,10 +214,10 @@ Other control flow constructs (like `elif`) work in an analogous way, and
 in fact can be constructed using just `if`-`else` and `while`. There is one
 particular statement that requires special care, however, as we'll see next.
 
-# `try`-`catch`-`finally`
+# `try`-`except`-`finally`
 
 While most of Python's control flow constructs are relatively easy to compile,
-`try`-`catch`-`finally` is quite possibly one of the most difficult and nuanced
+`try`-`except`-`finally` is quite possibly one of the most difficult and nuanced
 things to get right when it comes to mapping Python to LLVM IR, on a number of
 different levels. Exception handling itself is actually not too difficult, as
 we can use the [Itanium C++ ABI](https://itanium-cxx-abi.github.io/cxx-abi/abi-eh.html)
@@ -230,7 +230,7 @@ a `try` block, which requires us to call functions with the LLVM `invoke` instru
 (rather than the usual `call`) and to specify a basic block to branch to if an exception
 occurs (i.e. the basic block corresponding to `except`).
 
-The *real* difficulty with `try`-`catch`-`finally` comes from the `finally`. It
+The *real* difficulty with `try`-`except`-`finally` comes from the `finally`. It
 turns out `finally` has certain semantics that many programmers might not even be
 aware of. For example, take a look at this code:
 
@@ -269,18 +269,18 @@ block would we skipped over. Now, the `finally` itself has a `continue`, which o
 the previous `break` and resumes the loop. So, in the end, all the integers `0`...`9`
 are printed.
 
-To actually generate correct code for `try`-`catch`-`finally`, we need a couple different
+To actually generate correct code for `try`-`except`-`finally`, we need a couple different
 ingredients:
 
-- Firstly, we need to maintain a stack of enclosing `try`-`catch`-`finally` blocks,
+- Firstly, we need to maintain a stack of enclosing `try`-`except`-`finally` blocks,
   since if we reach a `return`, `break` or `continue`, we need to know whether
   we really need to branch to some `finally` block.
 
-- Next, we need to set up a state machine for each series of nested `try`-`catch`-`finally`
+- Next, we need to set up a state machine for each series of nested `try`-`except`-`finally`
   blocks, since once we *do* reach the `finally`, we need to know how we got there in order to
   determine what action we need to take next. For instance, if we got there via a `return`,
   we need to actually execute that return statement at the end of the block; or perhaps we got
-  there by catching an exception that needs to be delegated to a parent `try`-`catch`-`finally`.
+  there by catching an exception that needs to be delegated to a parent `try`-`except`-`finally`.
 
 At the end of the day, we need to construct a state machine with the following states:
 
@@ -291,7 +291,7 @@ At the end of the day, we need to construct a state machine with the following s
   the exception out of the function. The exception object itself will be stored in a pre-defined
   place that we can access from the `finally` block.
 
-- `CAUGHT`: We've caught an exception and are reaching the `finally` through some `catch` block.
+- `CAUGHT`: We've caught an exception and are reaching the `finally` through some `except` block.
   Again nothing special needs to be done here; we can just branch to the next block normally.
 
 - `RETURN`: We've reached the `finally` after encountering an enclosed `return` statement. After
