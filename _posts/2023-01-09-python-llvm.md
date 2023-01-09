@@ -167,10 +167,6 @@ graph TD
     B_false(B<sub>false</sub>) ---> B_exit
 </div>
 
-We can also handle `elif`s by converting them to a series of nested `if`-`else`s, then
-apply the same procedure. These types of conversions are actually performed in Codon's
-own IR, which we'll delve into in a future post.
-
 Let's look at one other example:
 
 ``` python
@@ -208,7 +204,7 @@ What about `break` and `continue`? These turn out to be very straightforward
 when thinking in terms of basic blocks: `break` simply becomes a branch to
 $$B_\mathrm{exit}$$ and `continue` becomes a branch to $$B_\mathrm{cond}$$.
 
-Other control flow constructs, like `elif`, work in an analogous way, and
+Other control flow constructs (like `elif`) work in an analogous way, and
 in fact can be constructed using just `if`-`else` and `while`. There is one
 particular statement that requires special care, however, as we'll see next.
 
@@ -743,6 +739,6 @@ code to LLVM. You can view the LLVM IR output of your own code with `codon build
 (remember to add the `-release` flag to enable optimizations).
 
 There *are* many things we took for granted here, like how we determine
-the data types to begin with, or how we put the source code in a format that's amenable
+the data types to begin with, or how we put the source code in a format that's suitable
 for code generation. These, among other things, will be topics of future posts in this series.
 Stay tuned!
