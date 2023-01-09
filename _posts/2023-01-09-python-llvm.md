@@ -26,6 +26,12 @@ This post will mainly focus on the LLVM IR generation, and how we map various
 Python constructs to LLVM IR. Sometimes this is very straightforward, while
 other times it can be very tricky to get right, as we'll see below.
 
+(This post assumes a basic familiarity with LLVM and code generation. See
+[Eli Bendersky's excellent blog posts](https://eli.thegreenplace.net/tag/code-generation)
+for an informal introduction or refresher, or
+[this](https://mukulrathi.com/create-your-own-programming-language/llvm-ir-cpp-api-tutorial/)
+great tutorial.)
+
 # Getting started: Python types to LLVM types
 
 One of the first things we need to consider is how to convert from Python types
